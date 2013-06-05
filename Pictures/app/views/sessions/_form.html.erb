@@ -1,0 +1,17 @@
+<%= form_tag sessions_url do %>
+  <div class="field">
+
+    <%= label_tag :username %>
+    <%= text_field_tag :username %>
+  </div>
+  <div class="field">
+    <%= label_tag :password %>
+    <%= password_field_tag :password %>
+  </div>
+
+   <button class="action blue" style="float:right;">
+    <span class="label">
+         Sing In
+    </span>
+  </button>
+<% end %>

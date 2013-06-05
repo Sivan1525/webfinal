@@ -1,0 +1,61 @@
+#basebox{
+	width:1024px;
+	height: 1024px;
+	margin-left: auto;
+	margin-right: auto;
+	background-color: #0000FF;
+}
+.item{
+	padding: 10px;
+	width: 220px;
+	margin: 10px;
+	float:left;
+}
+
+#headnavwrapper{
+	box-shadow: 0px 2px 5px #888888;
+	height: 3em;
+	background-color: #0000FF;
+	margin-top: -0.5em;
+	margin-left: auto;
+	margin-right: auto;
+}
+#headnav{
+	width: 1024px;
+	height: 3em;
+	margin-left: auto;
+	margin-right: auto;
+	background-color: #FF0000;
+}
+#leftnav{
+	background-color: #00FFFF;
+	width: 341.3px;
+	height: 3em;
+}
+#middlenav{
+	position: relative;
+	left: 341.3px;
+	top:-3em;
+	width: 341.4px;
+	background-color: #FF00FF;
+	height: 3em;
+}
+#middlelogo{
+	width:6em;
+	margin-left: auto;
+	margin-right: auto;	
+}
+#rightnav{
+	position: relative;
+	left: 682.7px;
+	top:-6em;
+	width: 341.3px;
+	height: 3em;
+	background-color: #FFFF00;
+}
+#rightbuttons{
+	background-color: #FFF000;
+	width: 300px;
+	float:right;
+
+}
