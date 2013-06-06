@@ -58,7 +58,13 @@
 	<div id="imagescontainer">
 	<div id="container">
         <% if @pictures != nil%>
-		  
+		  <% for @picture in @pictures %>
+            <div class = "item">
+                <a href="photos/<%=@picture.id%>">
+                <%= image_tag @picture.image_url(:thumb).to_s %>
+                </a>
+            </div>
+          <% end %>
         <% end %>
 
 	</div>
