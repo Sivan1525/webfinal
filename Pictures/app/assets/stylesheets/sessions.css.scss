@@ -16,15 +16,13 @@
 	font-size: 30px;
 }
 #welcomelogo{
-	width:23em;
-	text-decoration: none;
+	width:25em;
+
+	height:10em;
+	background-image:url("logo.png");
+	background-repeat: no-repeat;
 	margin-left: auto;
 	margin-right: auto;
-}
-#welcomelogo a img:hover{
-	box-shadow:none;
-	opacity:1.0;
-	background-color:transparent;
 }
 #signinform{
 	margin-top: 5em;
@@ -32,4 +30,21 @@
 	margin-left: auto;
 	margin-right: auto;
 	
+}
+input.rounded {
+	width:12em;
+	border: 1px solid #ccc;
+	-moz-border-radius: 10px;
+	-webkit-border-radius: 10px;
+	border-radius: 10px;
+	-moz-box-shadow: 2px 2px 3px #666;
+	-webkit-box-shadow: 2px 2px 3px #666;
+	box-shadow: 2px 2px 3px #666;
+	font-size: 20px;
+	padding: 4px 7px;
+	outline: 0;
+	-webkit-appearance: none;
+}
+input.rounded:focus {
+	border-color: #000000;
 }

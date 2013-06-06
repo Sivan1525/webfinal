@@ -3,11 +3,18 @@
   margin: 10px;
   float: left;
 }
+#container{
+}
 #imagescontainer{
+	position: relative;
+	top:-5.5em;
+	z-index: -1;
+	overflow: hidden;
+	box-shadow: 0px 0px 10px #888888;
 	width:1024px;
+	height:auto;
 	margin-left: auto;
 	margin-right: auto;
-	background-color: #0000FF;
 
 }
 #headnavwrapper{
@@ -47,7 +54,8 @@
 	height: 3em;
 }
 #rightbuttons{
-	width: 300px;
+	width: 230px;
 	float:right;
+	background-color: #FFFF00;
 
 }

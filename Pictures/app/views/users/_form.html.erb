@@ -12,18 +12,18 @@
   <% end %>
 
   <div class="field">
-    <%= f.text_field :username, placeholder: "username" %>
+     <input id="user_username" name="user[username]" class="rounded" placeholder="username" size="30" type="text" />
+  </div>
+   <div class="field">
+    <input id="user_email" name="user[email]" class="rounded" placeholder="email" size="30" type="text" />
   </div>
   <div class="field">
-    <%= f.text_field :email, placeholder: "email" %>
-  </div>
-  <div class="field">
-    <%= f.password_field :password, placeholder: "password" %>
+    <input id="user_password" name="user[password]" class="rounded" placeholder="password" size="30" type="password" />
   </div>
     <div class="field">
-    <%= f.password_field :password_confirmation, placeholder: "confirm password" %>
+    <input id="user_password_confirmation" name="user[password_confirmation]" class="rounded" placeholder="confirm password" size="30" type="password" />
   </div>
-  <button class="action green" style="float:left;">
+  <button class="action blue" style="float:left;">
     <span class="label">
          Save
     </span>
