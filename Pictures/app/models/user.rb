@@ -4,5 +4,9 @@ class User < ActiveRecord::Base
   has_secure_password
   has_many :photo
   validates :email, uniqueness: true, presence: true
-  validates :username, uniqueness: true, presence: true
+  validates :username, uniqueness: true, presence: 
+
+  def pictures
+  		return @pictures = Photo.where(:user_id => self.id)
+  end
 end

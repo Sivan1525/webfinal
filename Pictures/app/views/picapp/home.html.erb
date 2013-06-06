@@ -1,5 +1,7 @@
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 
+
+
 	<div id="headnavwrapper">
 	<div id="headnav">
 			<div id="leftnav">
@@ -20,20 +22,31 @@
 							Photo
 							</span>
 						</a>
-						<a href = "#" class="button middle">
-							<span class="icon icon63">
-							</span>
-							<span class="label">
-							middle
-							</span>
-						</a>
-						<a href = "#" class="button right">
-							<span class="icon icon63">
-							</span>
-							<span class="label">
-							right
-							</span>
-						</a>
+
+						<div class="dropdown" style="width:9em;">
+      						<a href="#" class="button right" style="width:9em;">
+      							<span class="icon icon4">
+								</span>
+      							<span class="label"><%= @user.username%>
+      							</span>
+      						</a>
+     						 <div class="dropdown-slider">
+       							 <a href="/users/<%=@user.id%>" class="ddm">
+       							 	<span class="icon icon112">
+									</span>
+       							 	<span class="label">Profile</span>
+       							 </a>
+      						  	 <a href="/sessions/destroy" class="ddm">
+      						  	 	<span class="icon icon151">
+									</span>
+      						  	 	<span class="label">
+      						  	 		Logout
+      						  	 	</span>
+      						  	</a>
+     						 </div> <!-- /.dropdown-slider -->
+   						 </div> <!-- /.dropdown -->
+
+
 					</div>
 				</div>		
 			</div>
@@ -42,15 +55,52 @@
 
 
 
+	<div id="imagescontainer">
 	<div id="container">
-		<% for i in 1..10 %>
+		<% for @picture in @pictures %>
 			<div class = "item">
+				<a href="photos/<%=@picture.id%>">
+				<%= image_tag @picture.image_url(:thumb).to_s %>
+				</a>
 			</div>
 		<% end %>
 
 	</div>
+	</div>
 
 
 <script > 
+var $container = $('#container');
+$container.imagesLoaded(function(){
+  $container.masonry({
+    itemSelector : '.item',
+    columnWidth : 240
+  });
+});
+
+
+$(document).ready(function(){
+	$('.tiptip a.button, .tiptip button').tipTip();
+}
+	);
 </script>
 
+
+    <script>
+        $(document).ready(function() {
+            // Toggle the dropdown menu's
+            $(".dropdown .button, .dropdown button").click(function () {
+                $(this).parent().find('.dropdown-slider').slideToggle('fast');
+                $(this).find('span.toggle').toggleClass('active');
+                return false;
+            });
+        }); // END document.ready
+        
+        // Close open dropdown slider/s by clicking elsewhwere on page
+        $(document).bind('click', function (e) {
+            if (e.target.id != $('.dropdown').attr('class')) {
+                $('.dropdown-slider').slideUp();
+                $('span.toggle').removeClass('active');
+            }
+        }); // END document.bind
+    </script>

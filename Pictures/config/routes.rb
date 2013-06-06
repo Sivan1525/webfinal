@@ -7,6 +7,7 @@ Pictures::Application.routes.draw do
   resources :users
   get '/welcome' =>'Picapp#welcome', as: 'welcome'
   get '/home' =>'Picapp#home', as: 'home'
+  get '/sessions/destroy' =>'Sessions#destroy'
   get '/sessions/new' => 'Sessions#new', as: 'new_session'
   post '/sessions' => 'Sessions#create', as: 'sessions'
   delete '/sessions' => 'Sessions#destroy', as: 'session'

@@ -10,11 +10,12 @@
   <%= @user.email %>
 </p>
 
-<p>
-  <b>Password digest:</b>
-  <%= @user.password_digest %>
-</p>
 
 
-<%= link_to 'Edit', edit_user_path(@user) %> |
-<%= link_to 'Back', '/welcome' %>
+
+<a href="/users/<%=@user.id%>/edit" class="button green">
+			Edit
+</a>	
+<a href="/home" class="button red">
+			Back
+</a>

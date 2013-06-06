@@ -1,6 +1,4 @@
-<p id="notice"><%= notice %></p>
 
-<p>
   <b>Comment:</b>
   <%= @photo.comment %>
 
@@ -9,5 +7,10 @@
 	<%= image_tag @photo.image_url(:thumb).to_s %>
 </p>
 
-<%= link_to 'Edit', edit_photo_path(@photo) %> |
-<%= link_to 'Back', photos_path %>
+<a href="/photos/<%=@photo.id%>/edit" class="button green">
+			Edit
+</a>	
+<a href="/home" class="button red">
+			Back
+</a>	
+
