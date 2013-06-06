@@ -7,11 +7,97 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+  <% if User.find_by_id(session[:user_id]) != nil %>
+  <div id="headnavwrapper">
+    <div id="headnav">
+            <div id="leftnav">
+
+            </div>
+            <div id="middlenav">
+                <a href='/home'>
+                <div id="middlelogo">
+                    <%= image_tag "logo.png", :size => "100x30"%>
+                </div>
+                </a>
+            </div>
+             <div id="rightnav">     
+                <div id="rightbuttons">
+                    <div class="buttons">
+                        <a href = "/photos/new" class="button left">
+                            <span class="icon icon3">
+                            </span>
+                            <span class="label">
+                            Photo
+                            </span>
+                        </a>
+
+                        <div class="dropdown" style="width:13em;">
+                            <a href="#" class="button right" style="width:13em;">
+                                <span class="icon icon4">
+                                </span>
+                                <span class="label">
+                                        <%=User.find_by_id(session[:user_id]).username%>
+                                </span>
+                            </a>
+                             <div class="dropdown-slider">
+                                 <a href="/users/<%=session[:user_id]%>" class="ddm">
+                                    <span class="icon icon112">
+                                    </span>
+                                    <span class="label">Profile</span>
+                                 </a>
+                                 <a href="/sessions/destroy" class="ddm" >
+                                    <span class="icon icon151">
+                                    </span>
+                                    <span class="label">
+                                        Logout
+                                    </span>
+                                </a>
+                             </div> <!-- /.dropdown-slider -->
+                         </div> <!-- /.dropdown -->
 
 
+                    </div>
+                </div>      
+            </div>
+    </div>
+    </div>
+
+
+   
+
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    
+    
+    <%end%>
 <%= notice %>
 
 <%= yield %>
+
+
+
+<script>
+        $(document).ready(function(){
+              $('.tiptip a.button, .tiptip button').tipTip();
+        });
+        $(document).ready(function() {
+            // Toggle the dropdown menu's
+            $(".dropdown .button, .dropdown button").click(function () {
+                $(this).parent().find('.dropdown-slider').slideToggle('fast');
+                $(this).find('span.toggle').toggleClass('active');
+                return false;
+            });
+        }); // END document.ready
+        
+        // Close open dropdown slider/s by clicking elsewhwere on page
+        $(document).bind('click', function (e) {
+            if (e.target.id != $('.dropdown').attr('class')) {
+                $('.dropdown-slider').slideUp();
+                $('span.toggle').removeClass('active');
+            }
+        }); // END document.bind
+    </script>
+
+
 
 </body>
 </html>

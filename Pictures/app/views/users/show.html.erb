@@ -1,5 +1,7 @@
 <p id="notice"><%= notice %></p>
-
+<div id="imagescontainer">
+	
+	<div id="usershowbox">
 <p>
   <b>Username:</b>
   <%= @user.username %>
@@ -9,13 +11,13 @@
   <b>Email:</b>
   <%= @user.email %>
 </p>
-
-
-
-
-<a href="/users/<%=@user.id%>/edit" class="button green">
+</div>
+<div id="usershowbuttons">
+	<a href="/users/<%=@user.id%>/edit" style="width:40px;text-align:center" class="button green">
 			Edit
 </a>	
-<a href="/home" class="button red">
+<a href="/home" style="width:40px;text-align:center" class="button red">
 			Back
 </a>
+</div>
+</div>

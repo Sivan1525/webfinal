@@ -1,60 +1,24 @@
 .item {
-  width: 300px;
-  margin: 10px;
+  width: 220px;
+  padding:10px;
+  margin-bottom: 10px;
+  box-shadow: 0px 0px 10px #888888;
   float: left;
 }
-#container{
-}
+
 #imagescontainer{
+	padding:1em;
 	position: relative;
-	top:-5.5em;
-	z-index: -1;
 	overflow: hidden;
 	box-shadow: 0px 0px 10px #888888;
+	top:1em;
 	width:1024px;
-	height:auto;
-	margin-left: auto;
-	margin-right: auto;
-
-}
-#headnavwrapper{
-	box-shadow: 0px 2px 5px #888888;
-	height: 3em;
-	margin-top: -0.5em;
 	margin-left: auto;
 	margin-right: auto;
 }
-#headnav{
-	width: 1024px;
-	height: 3em;
+.itemimage img{
+	width:220px;
 	margin-left: auto;
 	margin-right: auto;
-}
-#leftnav{
-	width: 341.3px;
-	height: 3em;
-}
-#middlenav{
-	position: relative;
-	left: 341.3px;
-	top:-3em;
-	width: 341.4px;
-	height: 3em;
-}
-#middlelogo{
-	width:6em;
-	margin-left: auto;
-	margin-right: auto;	
-}
-#rightnav{
-	position: relative;
-	left: 682.7px;
-	top:-6em;
-	width: 341.3px;
-	height: 3em;
-}
-#rightbuttons{
-	width: 230px;
-	float:right;
 
 }

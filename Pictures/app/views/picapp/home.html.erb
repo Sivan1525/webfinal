@@ -1,67 +1,14 @@
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 
-    
-    <div id="headnavwrapper">
-    <div id="headnav">
-            <div id="leftnav">
-
-            </div>
-            <div id="middlenav">
-                <div id="middlelogo">
-                    <%= image_tag "logo.png", :size => "100x30"%>
-                </div>
-            </div>
-            <div id="rightnav">     
-                <div id="rightbuttons">
-                    <div class="buttons">
-                        <a href = "/photos/new" class="button left">
-                            <span class="icon icon3">
-                            </span>
-                            <span class="label">
-                            Photo
-                            </span>
-                        </a>
-
-                        <div class="dropdown" style="width:9em;">
-                            <a href="#" class="button right" style="width:9em;">
-                                <span class="icon icon4">
-                                </span>
-                                <span class="label"><%=User.find_by_id(session[:user_id]).username%>
-                                </span>
-                            </a>
-                             <div class="dropdown-slider">
-                                 <a href="/users/<%=session[:user_id]%>" class="ddm">
-                                    <span class="icon icon112">
-                                    </span>
-                                    <span class="label">Profile</span>
-                                 </a>
-                                 <a href="/sessions/destroy" class="ddm">
-                                    <span class="icon icon151">
-                                    </span>
-                                    <span class="label">
-                                        Logout
-                                    </span>
-                                </a>
-                             </div> <!-- /.dropdown-slider -->
-                         </div> <!-- /.dropdown -->
-
-
-                    </div>
-                </div>      
-            </div>
-    </div>
-    </div>
-	
-
-
-
 	<div id="imagescontainer">
 	<div id="container">
         <% if @pictures != nil%>
 		  <% for @picture in @pictures %>
             <div class = "item">
                 <a href="photos/<%=@picture.id%>">
-                <%= image_tag @picture.image_url(:thumb).to_s %>
+                  <div class = "itemimage">
+                  <%= image_tag @picture.image_url(:thumb).to_s %>
+                  </div>
                 </a>
             </div>
           <% end %>
@@ -79,30 +26,6 @@ $container.imagesLoaded(function(){
     columnWidth : 240
   });
 });
-
-
-$(document).ready(function(){
-	$('.tiptip a.button, .tiptip button').tipTip();
-}
-	);
 </script>
 
 
-    <script>
-        $(document).ready(function() {
-            // Toggle the dropdown menu's
-            $(".dropdown .button, .dropdown button").click(function () {
-                $(this).parent().find('.dropdown-slider').slideToggle('fast');
-                $(this).find('span.toggle').toggleClass('active');
-                return false;
-            });
-        }); // END document.ready
-        
-        // Close open dropdown slider/s by clicking elsewhwere on page
-        $(document).bind('click', function (e) {
-            if (e.target.id != $('.dropdown').attr('class')) {
-                $('.dropdown-slider').slideUp();
-                $('span.toggle').removeClass('active');
-            }
-        }); // END document.bind
-    </script>
