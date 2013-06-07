@@ -1,0 +1,47 @@
+<div id="imagescontainer">
+  
+<div id="insideboxleft">
+
+<table>
+
+<% @users.each do |user| %>
+  <div id="listbox">
+   <a href = "/users/<%=user.id%>">
+    <div id="listboxavantar">
+      <%= image_tag user.image_url(:tinythumb).to_s%>
+    </div>
+    </a>
+    
+    <div id="listboxname">
+    <p>
+    <%= user.username %>
+    </p>
+    </div>
+    <div id="listboxemail">
+    <p>
+    <%= user.email %>
+    </p>
+    </div>
+
+    <% if @user.hasFollowedHim(user.id) %>
+      <div id="listboxbuttons">
+        <a href="/unfollow/<%=user.id%>" class="button red">
+            Unfollow
+        </a>
+       </div>
+    <% else %>
+      <div id="listboxbuttons">
+        <a href="/follow/<%=user.id%>" class="button blue">
+            Follow
+        </a>
+       </div>
+    <% end %>
+
+  </div>
+<% end %>
+</table>
+
+<br />
+</div>
+</div>
+

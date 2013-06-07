@@ -5,6 +5,9 @@ Pictures::Application.routes.draw do
 
 
   resources :users
+  get '/follow/:id' => 'Picapp#follow'
+  get '/unfollow/:id' => 'Picapp#unfollow'
+  get '/search' => 'Picapp#search', as: 'search'
   get '/welcome' =>'Picapp#welcome', as: 'welcome'
   get '/home' =>'Picapp#home', as: 'home'
   get '/sessions/destroy' =>'Sessions#destroy'

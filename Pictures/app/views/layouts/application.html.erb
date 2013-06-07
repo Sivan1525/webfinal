@@ -30,6 +30,13 @@
                             Photo
                             </span>
                         </a>
+                        <a href="/search" class="button middle" >
+                                <span class="icon icon198">
+                                </span>
+                                <span class="label">
+                                     Find people
+                                </span>
+                            </a>
 
                         <div class="dropdown" style="width:13em;">
                             <a href="#" class="button right" style="width:13em;">
@@ -65,15 +72,17 @@
 
    
 
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    
     
     
     <%end%>
-<%= notice %>
+<% if notice !=nil%>
+<div id="noticebox">
+    <%= notice %>
+</div>
+<%end%>
 
 <%= yield %>
-
-
 
 <script>
         $(document).ready(function(){
@@ -95,7 +104,7 @@
                 $('span.toggle').removeClass('active');
             }
         }); // END document.bind
-    </script>
+</script>
 
 
 

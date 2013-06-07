@@ -49,7 +49,7 @@ class PhotosController < ApplicationController
     puts "--------------------------end-------------------------------------------"
     respond_to do |format|
       if @photo.save
-        format.html { redirect_to '/home' }
+        format.html { redirect_to '/home', notice: 'You have uploaded a new photo'}
         format.json { render json: @photo, status: :created, location: @photo }
       else
         format.html { render action: "new" }
