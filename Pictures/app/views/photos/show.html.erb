@@ -1,16 +1,30 @@
+<div id="imagescontainer">
+  
+<diw id="imagedetail">
+	<%= image_tag @photo.image_url(:detail).to_s %>
+</div>
 
-  <b>Comment:</b>
+<div id="imagedetailcomment">
+	<p>
+<b>Comment:</b>
   <%= @photo.comment %>
-
 </p>
-<p>
-	<%= image_tag @photo.image_url(:thumb).to_s %>
+	<p>
+<b>Tag:</b>
+  <%= @photo.tag %>
 </p>
 
-<a href="/photos/<%=@photo.id%>/edit" class="button green">
+<div id="imagedetailbuttons">
+	<a href="/photos/<%=@photo.id%>/edit" class="button green">
 			Edit
-</a>	
-<a href="/home" class="button red">
+	</a>	
+	<a href="/home" class="button red">
 			Back
-</a>	
+	</a>	
+</div>
 
+
+
+</div>
+
+</div>

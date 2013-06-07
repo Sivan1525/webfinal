@@ -2,7 +2,7 @@
   
 <div id="insideboxleft">
 
-<table>
+
 
 <% @users.each do |user| %>
   <div id="listbox">
@@ -39,9 +39,38 @@
 
   </div>
 <% end %>
-</table>
 
 <br />
 </div>
+
+<div id="insideboxright">
+<div id="container">
+        <% if @photos != nil%>
+      <% for @photo in @photos %>
+            <div class = "item">
+                <a href="photos/<%=@photo.id%>">
+                  <div class = "itemimage">
+                  <%= image_tag @photo.image_url(:thumb).to_s %>
+                  </div>
+                </a>
+            </div>
+          <% end %>
+        <% end %>
+
+  </div>
+
+
+
+</div>
 </div>
 
+
+<script > 
+var $container = $('#container');
+$container.imagesLoaded(function(){
+  $container.masonry({
+    itemSelector : '.item',
+    columnWidth : 240
+  });
+});
+</script>
