@@ -1,4 +1,9 @@
-<div id="imagescontainer">
+<div id="noticebox" >
+    <b>
+    Found <%=@users.count.to_s%> users and <%=@photos.count.to_s%> pictures
+  </b>
+</div>
+<div id="bigbox">
   
 <div id="insideboxleft">
 
@@ -25,13 +30,13 @@
 
     <% if @user.hasFollowedHim(user.id) %>
       <div id="listboxbuttons">
-        <a href="/unfollow/<%=user.id%>" class="button red">
+        <a href="/follows/destroy/<%=user.id%>" class="button red">
             Unfollow
         </a>
        </div>
     <% else %>
       <div id="listboxbuttons">
-        <a href="/follow/<%=user.id%>" class="button blue">
+        <a href="/follows/new/<%=user.id%>" class="button blue">
             Follow
         </a>
        </div>

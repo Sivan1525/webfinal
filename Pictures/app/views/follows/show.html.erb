@@ -1,0 +1,50 @@
+<div id="noticebox">
+	<b>
+	<%= @user.username %> is following:
+	</b>
+</div>
+<div id="bigbox">
+  
+<div id="insideboxmiddle">
+
+   <% @follows.each do |follow| %>
+
+  <div id="listbox">
+   <a href = "/users/<%=follow.getfollowed.id%>">
+    <div id="listboxavantar">
+      <%= image_tag follow.getfollowed.image_url(:tinythumb).to_s%>
+    </div>
+    </a>
+    
+    <div id="listboxname">
+    <p>
+    <%= follow.getfollowed.username %>
+    </p>
+    </div>
+    <div id="listboxemail">
+    <p>
+    <%= follow.getfollowed.email %>
+    </p>
+    </div>
+
+    <% if @user.hasFollowedHim(follow.followed_id) %>
+      <div id="listboxbuttons">
+        <a href="/follows/destroy/<%=follow.followed_id%>" class="button red">
+            Unfollow
+        </a>
+       </div>
+    <% else %>
+      <div id="listboxbuttons">
+        <a href="/follows/new/<%=follow.followed_id%>" class="button blue">
+            Follow
+        </a>
+       </div>
+    <% end %>
+
+  </div>
+<% end %>
+
+<br />
+</div>
+</div>
+

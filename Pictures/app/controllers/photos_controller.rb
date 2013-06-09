@@ -14,7 +14,8 @@ class PhotosController < ApplicationController
   # GET /photos/1.json
   def show
     @photo = Photo.find(params[:id])
-
+    @comments = Comment.where(:photo_id => params[:id])
+    
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @photo }
@@ -40,15 +41,29 @@ class PhotosController < ApplicationController
   # POST /photos
   # POST /photos.json
   def create
-    puts "-------------------------------------------------we are here----------------------------------"
-
     @photo = Photo.new(params[:photo])
     @photo.user_id = session[:user_id]
+    @tagcontent = params[:tag]
+    if (@tagcontent!="")
+      tag = Tag.find_by_content(@tagcontent)
+      if (tag !=nil)
+        @tag_id = tag.id
+      else
+        @newtag = Tag.new
+        @newtag.content = @tagcontent
+        @newtag.save
+        @tag_id = @newtag.id
+      end
+    end
 
-    puts session[:user_id]
-    puts "--------------------------end-------------------------------------------"
     respond_to do |format|
       if @photo.save
+        if (@tagcontent!="")
+            @hastag = Hastag.new
+            @hastag.photo_id = @photo.id
+            @hastag.tag_id = @tag_id
+            @hastag.save
+        end
         format.html { redirect_to '/home', notice: 'You have uploaded a new photo'}
         format.json { render json: @photo, status: :created, location: @photo }
       else

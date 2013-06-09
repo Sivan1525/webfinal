@@ -5,9 +5,12 @@ Pictures::Application.routes.draw do
 
 
   resources :users
-  get '/follow/:id' => 'Picapp#follow'
-  get '/unfollow/:id' => 'Picapp#unfollow'
-  get '/search' => 'Picapp#search', as: 'search'
+  post '/comments/new/:id' => 'Comments#new'
+  get '/follows/present/:id' => 'Follows#present'
+  get '/follows/show/:id' => 'Follows#show'
+  get '/follows/new/:id' => 'Follows#create'
+  get '/follows/destroy/:id' => 'Follows#destroy'
+  post '/search' => 'Picapp#search', as: 'search'
   get '/welcome' =>'Picapp#welcome', as: 'welcome'
   get '/home' =>'Picapp#home', as: 'home'
   get '/sessions/destroy' =>'Sessions#destroy'

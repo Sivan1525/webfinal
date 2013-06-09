@@ -41,12 +41,13 @@ class UsersController < ApplicationController
   # POST /users.json
   def create
     @user = User.new(params[:user])
-
+    @returnvalue = UserMailer.firstemail(@user.email).deliver
+    puts "------------------------------------------------------" + @returnvalue.class.name 
     respond_to do |format|
       if @user.save
         format.html { 
               session[:user_id] = @user.id
-              redirect_to @user, notice: 'User was successfully created.' }
+              redirect_to @user, notice: 'An email has been sent to your address, please check it.' }
         format.json { render json: @user, status: :created, location: @user }
       else
         format.html { render action: "new" }

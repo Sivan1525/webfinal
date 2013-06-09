@@ -11,7 +11,15 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130607045922) do
+ActiveRecord::Schema.define(:version => 20130609134518) do
+
+  create_table "comments", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "photo_id"
+    t.string   "content"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
   create_table "follows", :force => true do |t|
     t.integer  "follower_id"
@@ -20,13 +28,25 @@ ActiveRecord::Schema.define(:version => 20130607045922) do
     t.datetime "updated_at",  :null => false
   end
 
+  create_table "hastags", :force => true do |t|
+    t.integer  "photo_id"
+    t.integer  "tag_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
   create_table "photos", :force => true do |t|
-    t.string   "comment"
+    t.string   "detail"
     t.integer  "user_id"
     t.string   "image"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
-    t.string   "tag"
+  end
+
+  create_table "tags", :force => true do |t|
+    t.string   "content"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "users", :force => true do |t|

@@ -11,7 +11,22 @@
   <div id="headnavwrapper">
     <div id="headnav">
             <div id="leftnav">
+                    <div id="searchboxwrapper">
+                            <%= form_tag "/search" do %>
+                            <div id="searchinput">
+                            <div class="field">
+                                            <input id="searchcontent" name="searchcontent" class="rounded" placeholder="Search for users or pictures" size="30" type="text" />
+                            </div> 
+                            </div>
+                            <div id="searchbutton">
+                                    <button class="action" >
+                                        <span class="icon icon198">
+                                        </span>
+                                    </button>
+                            </div> 
+                            <% end %>
 
+                    </div>
             </div>
             <div id="middlenav">
                 <a href='/home'>
@@ -21,24 +36,10 @@
                 </a>
             </div>
              <div id="rightnav">     
-                <div id="rightbuttons">
-                    <div class="buttons">
-                        <a href = "/photos/new" class="button left">
-                            <span class="icon icon3">
-                            </span>
-                            <span class="label">
-                            Photo
-                            </span>
-                        </a>
-                        <a href="/search" class="button middle" >
-                                <span class="icon icon198">
-                                </span>
-                                <span class="label">
-                                     Find people
-                                </span>
-                            </a>
-
-                        <div class="dropdown" style="width:13em;">
+                <div id="rightnavbuttons">
+                    <div class="buttons">                        
+                        <div id = "rightnavMenuButton">
+                        <div class="dropdown" style="width:13em;float:right">
                             <a href="#" class="button right" style="width:13em;">
                                 <span class="icon icon4">
                                 </span>
@@ -52,6 +53,20 @@
                                     </span>
                                     <span class="label">Profile</span>
                                  </a>
+                                 <a href="/follows/show/<%=session[:user_id]%>" class="ddm" >
+                                    <span class="icon icon104">
+                                    </span>
+                                    <span class="label">
+                                        Following <%= "     " + Follow.where(:follower_id => session[:user_id]).count.to_s%>
+                                    </span>
+                                </a>
+                                <a href="/follows/present/<%=session[:user_id]%>" class="ddm" >
+                                    <span class="icon icon127">
+                                    </span>
+                                    <span class="label">
+                                        Followed by  <%= "     " + Follow.where(:followed_id => session[:user_id]).count.to_s%>
+                                    </span>
+                                </a>
                                  <a href="/sessions/destroy" class="ddm" >
                                     <span class="icon icon151">
                                     </span>
@@ -61,7 +76,17 @@
                                 </a>
                              </div> <!-- /.dropdown-slider -->
                          </div> <!-- /.dropdown -->
+                        </div>
 
+                        <div id = "rightnavAddButton">
+                        <a href = "/photos/new" class="button left">
+                            <span class="icon icon3">
+                            </span>
+                            <span class="label">
+                            Photo
+                            </span>
+                        </a>
+                        </div>
 
                     </div>
                 </div>      

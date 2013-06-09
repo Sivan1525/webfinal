@@ -3,6 +3,7 @@ class User < ActiveRecord::Base
 
   has_secure_password
   has_many :photo
+  has_many :comment
 
   mount_uploader :image, ImageUploader
 
@@ -12,6 +13,17 @@ class User < ActiveRecord::Base
 
   def pictures
   		return @pictures = Photo.where(:user_id => self.id)
+  end
+  def caringpictures
+      @follows = Follow.select("followed_id").where(:follower_id => self.id)
+      @followed_ids = Array.new(@follows.count)
+      @followed_ids[0] = self.id
+      i = 1
+      @follows.each do |f|
+          @followed_ids[i] = f.followed_id
+          i = i + 1 
+      end
+      return  Photo.where(:user_id => @followed_ids)
   end
   def followers
       return @followers = Follow.where(:followed_id => self.id)

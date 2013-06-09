@@ -31,15 +31,36 @@
 	margin-right: auto;
 	
 }
-input.rounded {
-	width:12em;
+
+#mynoticebox{
+	width:245px;
+	height:20px;
+	margin-bottom:20px;
+	margin-left:auto;
+	margin-right:auto;
+	padding:10px;
+	box-shadow: 0px 0px 10px #888888;
+}
+input.roundedbig {
+	width:400px;
 	border: 1px solid #ccc;
 	-moz-border-radius: 10px;
 	-webkit-border-radius: 10px;
 	border-radius: 10px;
-	-moz-box-shadow: 2px 2px 3px #666;
-	-webkit-box-shadow: 2px 2px 3px #666;
-	box-shadow: 2px 2px 3px #666;
+	font-size: 20px;
+	padding: 4px 7px;
+	outline: 0;
+	-webkit-appearance: none;
+}
+input.roundedbig:focus {
+	border-color: #000000;
+}
+input.rounded {
+	width:250px;
+	border: 1px solid #ccc;
+	-moz-border-radius: 10px;
+	-webkit-border-radius: 10px;
+	border-radius: 10px;
 	font-size: 20px;
 	padding: 4px 7px;
 	outline: 0;

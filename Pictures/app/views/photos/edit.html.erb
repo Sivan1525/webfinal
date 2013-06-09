@@ -1,8 +1,45 @@
-<h1>Editing photo</h1>
+<div id="bigbox">
+  
+<diw id="bigboxinsideimagebox">
 <%= image_tag @photo.image_url.to_s %>
-<%= render 'form' %>
+</div> <!--bigboxinsideimagebox-->
+<div id="ImageDetailBox">
+  <div id="ImageDetailBoxChangeMakeBox" >
+  <%= form_for @photo, :html =>{:multipart => true} do |f| %>
+  <% if @photo.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@photo.errors.count, "error") %> prohibited this photo from being saved:</h2>
+
+      <ul>
+      <% @photo.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <input id="photo_comment" class ="rounded" placeholder = "detail" name="photo[comment]" size="30" type="text" value="<%=@photo.comment%>" />
+  </div>
+  <div class="field">
+    <input id="photo_tag" name="tag" placeholder = "tag" class ="rounded" size="30" type="text" value="<%=@photo.tag%>" />
+  </div>
+  <div id="ImageDetailBoxChangeMakeBoxButton">
+  <button class="action green" >
+    <span class="label">
+    	 Save
+    </span>
+  </button>
+  </div>
+
+  `
+  </div> <!--ImageDetailBoxChangeMakeBox-->
+<% end %>
 
 
-<a href="/home" class="button red">
-			Back
-</a>	
+
+</div> <!--ImageDetailBox-->
+
+</div> <!--bigbox-->
+
+
