@@ -1,6 +1,9 @@
 class SessionsController < ApplicationController
   def new
       @tips=""
+      if session[:user_id] != nil 
+         redirect_to '/home'
+      end
   end
 
   def create

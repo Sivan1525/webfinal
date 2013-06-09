@@ -7,9 +7,19 @@ class User < ActiveRecord::Base
 
   mount_uploader :image, ImageUploader
 
+
+  before_validation :convert_email
+
   validates :email, uniqueness: true, presence: true
+  validates :email, email_format: {message: "It seems this is not an email address"}
   validates :username, uniqueness: true, presence: true
   validates :image, presence: true
+
+
+  def convert_email
+      self.email = self.email.downcase
+  end
+
 
   def pictures
   		return @pictures = Photo.where(:user_id => self.id)

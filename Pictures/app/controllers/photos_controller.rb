@@ -1,12 +1,19 @@
 class PhotosController < ApplicationController
+
+  before_filter :checklogin
+
+    def checklogin
+        if session[:user_id] == nil || session[:user_id] == ""
+           redirect_to '/error'
+          end
+    end
+
+  
   # GET /photos
   # GET /photos.json
   def index
-    @photos = Photo.all
-
-    respond_to do |format|
-      format.html # index.html.erb
-      format.json { render json: @photos }
+    if session[:user_id] != nil 
+         redirect_to '/home'
     end
   end
 
@@ -77,7 +84,46 @@ class PhotosController < ApplicationController
   # PUT /photos/1.json
   def update
     @photo = Photo.find(params[:id])
-
+    @photo_oldtag = @photo.gettag
+    @tagcontent = params[:tag]
+    if @photo.hastag
+          if @tagcontent != @photo_oldtag
+              @deletehastag = Hastag.find_by_photo_id(@photo.id)
+              @deletehastag.destroy
+              if (@tagcontent!="")
+                  tag = Tag.find_by_content(@tagcontent)
+                  if (tag !=nil)
+                    @tag_id = tag.id
+                  else
+                    @newtag = Tag.new
+                    @newtag.content = @tagcontent
+                    @newtag.save
+                    @tag_id = @newtag.id
+                    @hastag = Hastag.new
+                    @hastag.photo_id = @photo.id
+                    @hastag.tag_id = @tag_id
+                    @hastag.save
+                  end
+              end     
+          end
+         
+    else
+        if (@tagcontent!="")
+            tag = Tag.find_by_content(@tagcontent)
+            if (tag !=nil)
+              @tag_id = tag.id
+            else
+              @newtag = Tag.new
+              @newtag.content = @tagcontent
+              @newtag.save
+              @tag_id = @newtag.id
+            end
+            @hastag = Hastag.new
+            @hastag.photo_id = @photo.id
+            @hastag.tag_id = @tag_id
+            @hastag.save
+        end
+    end
     respond_to do |format|
       if @photo.update_attributes(params[:photo])
         format.html { redirect_to @photo, notice: 'Photo was successfully updated.' }

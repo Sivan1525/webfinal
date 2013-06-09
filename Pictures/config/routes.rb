@@ -2,9 +2,11 @@ Pictures::Application.routes.draw do
 
 
   resources :photos
-
-
   resources :users
+
+
+  get '/error' => 'Picapp#error'
+  get '/error2' => 'Picapp#error2'
   post '/comments/new/:id' => 'Comments#new'
   get '/follows/present/:id' => 'Follows#present'
   get '/follows/show/:id' => 'Follows#show'

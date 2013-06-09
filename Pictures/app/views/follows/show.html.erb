@@ -28,13 +28,13 @@
     </div>
 
     <% if @user.hasFollowedHim(follow.followed_id) %>
-      <div id="listboxbuttons">
+      <div id="listboxbuttonssp">
         <a href="/follows/destroy/<%=follow.followed_id%>" class="button red">
             Unfollow
         </a>
        </div>
     <% else %>
-      <div id="listboxbuttons">
+      <div id="listboxbuttonssp">
         <a href="/follows/new/<%=follow.followed_id%>" class="button blue">
             Follow
         </a>

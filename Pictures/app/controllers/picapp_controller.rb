@@ -1,5 +1,22 @@
 class PicappController < ApplicationController
+
+	before_filter :checklogin, :only => [:home, :search]
+
+  	def checklogin
+    	  if session[:user_id] == nil || session[:user_id] == ""
+    	   	   	redirect_to '/error'
+      	  end
+  	end
+
+
+
 	def welcome
+    	  if session[:user_id] != nil 
+    	   	   	redirect_to '/home'
+      	  end
+
+	end
+	def error
 	end
 	def home
 		@user = User.find_by_id(session[:user_id])
@@ -9,8 +26,25 @@ class PicappController < ApplicationController
 	def search
 		@user = User.find_by_id(session[:user_id])
 		@searchcontent = params[:searchcontent]
-		puts "Got content " + @searchcontent + "%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%"
-		@photos = Photo.all(:conditions => "tag LIKE '%#{@searchcontent}%' OR comment LIKE '%#{@searchcontent}%'")
+		@tags = Tag.all(:conditions => "content LIKE '%#{@searchcontent}%'")	
+
+		@tag_ids = Array.new(@tags.count)
+		for i in 0...@tags.count
+			@tag_ids[i] = @tags[i].id
+		end
+
+		@hastags = Hastag.where(:tag_id => @tag_ids)
+		@photo_ids = Array.new(@hastags.count)
+		# puts "--------------------------------" + @hastags.count.to_s + "%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%5"
+
+		for i in 0...@hastags.count
+			@photo_ids[i] = @hastags[i].photo_id
+		end
+		@photos1 = Photo.all(:conditions => "detail LIKE '%#{@searchcontent}%'")
+		@photos2 = Photo.where(:id => @photo_ids);
+
+		@photos = @photos1 + @photos2
+
 		@users = User.all(:conditions => "username LIKE '%#{@searchcontent}%'")
 	end
 	# def follow

@@ -1,6 +1,6 @@
 <div id="bigbox">
   	<div id="bigboxinsideimagebox">
-	<%= image_tag @photo.image_url(:detail).to_s%>
+	<%= image_tag @photo.image_url(:detail).to_s, :id => "showimage"%>
 	</div>
 </div>
 
@@ -31,6 +31,14 @@
             <input id="commentcontent" name="commentcontent" class="roundedbig" placeholder="Leave any comments? " size="30" type="text" />
         </div> 
         </div> 
+
+        <div id="tweetbutton">
+        	<a href="https://twitter.com/share" class="twitter-share-button" data-text="I like this picture" data-size="large" data-count="none">Tweet</a>
+			<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');
+			</script>
+        </div>
+        
+
         <div id="ImageDetailBoxCommentMakeBoxButton" >
         <button class="action green" >
            	<span class="label">
@@ -39,6 +47,10 @@
                
         </button>
         </div> 	
+
+
+
+
 		
     <% end %>
 
@@ -54,7 +66,7 @@
 	<% @comments.each do |comment|%>
 		<% @commentUser = User.find_by_id(comment.user_id) %>
 		<div id="ListBoxLong">	
-			<div id="ListBoxAvantar">	
+			<div id="listboxavantar">
 				<%= image_tag @commentUser.image_url(:tinythumb).to_s%>
 			</div>
 		</div>
@@ -67,3 +79,9 @@
 	<% end %>
 </div>
 
+<script>
+	var image = document.getElementById('showimage');
+	offset = (984-image.width)/2
+	image.style.cssText = "position:relative;left:"+offset.toString()+"px;visibility:visible";
+
+</script>

@@ -1,4 +1,13 @@
 class CommentsController < ApplicationController
+
+	before_filter :checklogin
+
+	  def checklogin
+    	  if session[:user_id] == nil || session[:user_id] == ""
+       	   redirect_to '/error'
+      	  end
+  	end
+	
 	def new
 		
 		@photo_id = params[:id]

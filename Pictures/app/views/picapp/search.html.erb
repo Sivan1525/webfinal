@@ -28,14 +28,33 @@
     </p>
     </div>
 
+
+    <div id="followingbox">
+      <a href="/follows/show/<%=user.id%>" class="ddm" >
+                                    <span class="icon icon104">
+                                    </span>
+                                    <span class="label">
+                                        Following <%= "     " + Follow.where(:follower_id => user.id).count.to_s%>
+                                    </span>
+                                </a>
+                                <a href="/follows/present/<%=user.id%>" class="ddm" >
+                                    <span class="icon icon127">
+                                    </span>
+                                    <span class="label">
+                                        Followed by  <%= "     " + Follow.where(:followed_id => user.id).count.to_s%>
+                                    </span>
+                                </a>
+  </div>
+
+
     <% if @user.hasFollowedHim(user.id) %>
-      <div id="listboxbuttons">
+      <div id="listboxbuttonsextra">
         <a href="/follows/destroy/<%=user.id%>" class="button red">
             Unfollow
         </a>
        </div>
     <% else %>
-      <div id="listboxbuttons">
+      <div id="listboxbuttonsextra">
         <a href="/follows/new/<%=user.id%>" class="button blue">
             Follow
         </a>

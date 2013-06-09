@@ -5,3 +5,24 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+
+
+
+tags = [
+	{:content => "sports"},
+	{:content => "movie"},
+	{:content => "music"},
+	{:content => "football"},
+	{:content => "blues"},
+	{:content => "Tom Brady"},
+	{:content => "Frank Lampard"},
+	{:content => "Steve Nash"}
+]
+tags.each do |tag|
+		t = Tag.new
+		t.content = tag[:content]
+		t.save
+end
+
+
+

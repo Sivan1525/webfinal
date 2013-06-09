@@ -1,4 +1,13 @@
 class FollowsController < ApplicationController
+
+	before_filter :checklogin
+
+	  def checklogin
+    	  if session[:user_id] == nil || session[:user_id] == ""
+       	   redirect_to '/error'
+      	  end
+  	end
+	
 	def create
 		@follow = Follow.new
 		@follow.follower_id = session[:user_id]
@@ -17,11 +26,11 @@ class FollowsController < ApplicationController
 	def show
 		@follower = params[:id]
 		@follows = Follow.where(:follower_id => @follower)
-		@user = User.find_by_id(session[:user_id])
+		@user = User.find_by_id(@follower)
 	end
 	def present
 		@followed = params[:id]
 		@follows = Follow.where(:followed_id => @followed)
-		@user = User.find_by_id(session[:user_id])
+		@user = User.find_by_id(@followed)
 	end
 end

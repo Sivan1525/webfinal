@@ -23,6 +23,7 @@
 #headnav{
 	width: 1024px;	
 	height: 40px;
+	padding:3px;
 	margin-left: auto;
 	margin-right: auto;
 }
@@ -35,19 +36,17 @@
 }
 #searchinput{
 	height:36px;
-	padding:2px;
 	float: left;
 }
 #searchbutton{
 	height:36px;
-	padding:2px;
 	float: left;
 }
 
 #middlenav{
 	position: relative;
 	left: 341.3px;
-	top:-40px;
+	top:-36px;
 	width: 341.4px;
 	height: 40px;
 }
