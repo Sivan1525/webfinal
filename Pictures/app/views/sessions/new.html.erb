@@ -1,0 +1,17 @@
+
+<div id="welcomeinfo">
+	<div id="welcomeword">Welcome back to </div>
+	<a href ="/welcome">
+	<div id="welcomelogo">
+	</div>
+	</a>
+</div>
+<div id="signinform">
+<% if @tips !=""%>
+	<div id="mynoticebox">
+	    <%= @tips %>
+	</div>
+<%end%>	
+<%= render 'form' %>
+</div>
+

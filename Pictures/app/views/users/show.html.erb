@@ -1,0 +1,96 @@
+	
+<div id="insideboxmiddle">
+
+
+  <div id="listbox">
+  	  <div id="listboxavantar">
+      <%= image_tag @user.image_url(:tinythumb).to_s%>
+    </div>
+    <div id="listboxname">
+		<p>
+  					<%= @user.username %>
+		</p>
+	</div>
+	<div id="listboxemail">
+			<p>
+  				<%= @user.email %>
+			</p>
+	</div>
+	<div id="followingbox">
+			<a href="/follows/show/<%=@user.id%>" class="ddm" >
+                                    <span class="icon icon104">
+                                    </span>
+                                    <span class="label">
+                                        Following <%= "     " + Follow.where(:follower_id => @user.id).count.to_s%>
+                                    </span>
+                                </a>
+                                <a href="/follows/present/<%=@user.id%>" class="ddm" >
+                                    <span class="icon icon127">
+                                    </span>
+                                    <span class="label">
+                                        Followed by  <%= "     " + Follow.where(:followed_id => @user.id).count.to_s%>
+                                    </span>
+                                </a>
+	</div>
+
+
+	</div>
+
+	<% if session[:user_id] != @user.id %>
+	 <% if User.find_by_id(session[:user_id]).hasFollowedHim(@user.id) %>
+      <div id="listboxbuttonsextra">
+        <a href="/follows/destroy/<%=@user.id%>" class="button red">
+            Unfollow
+        </a>
+       </div>
+    <% else %>
+      <div id="listboxbuttonsextra">
+        <a href="/follows/new/<%=@user.id%>" class="button blue">
+            Follow
+        </a>
+       </div>
+    <% end %>
+    <% end %>
+
+
+
+	<% if session[:user_id] == @user.id %>
+	<div id="listboxbuttonsextra">
+	<a href="/users/<%=@user.id%>/edit" style="width:40px;text-align:center" class="button green">
+			Edit
+	</a>	
+	</div>
+	<% end %>
+</div>
+</div><!--insideboxmiddle-->
+
+<div id="bigbox">
+	<div id="container">
+        <% if @pictures != nil%>
+		  <% for @picture in @pictures %>
+            <div class = "item">
+                <a href="/photos/<%=@picture.id%>">
+                  <div class = "itemimage">
+                  <%= image_tag @picture.image_url(:thumb).to_s %>
+                  </div>
+                </a>
+            </div>
+          <% end %>
+        <% end %>
+
+	</div>
+</div>
+
+
+<script > 
+var $container = $('#container');
+$container.imagesLoaded(function(){
+  $container.masonry({
+    itemSelector : '.item',
+    columnWidth : 240
+  });
+});
+</script>
+
+
+
