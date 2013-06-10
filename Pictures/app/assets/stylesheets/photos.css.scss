@@ -38,9 +38,17 @@
 }
 #ImageDetailBoxCommentMakeBoxInput{
 	float:left;
+	position:relative;
+	top:5px;
 }
 #ImageDetailBoxCommentMakeBoxButton{
 	float:right;
+	position:relative;
+}
+#ImageDetailBoxCommentMakeBoxButtonExtra{
+	float:right;
+	top:-30px;
+	left: -72px;
 	position:relative;
 }
 #tweetbutton{

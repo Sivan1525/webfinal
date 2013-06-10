@@ -22,6 +22,11 @@
 			Edit
 			</a>	
 		</div>	
+		<div id="ImageDetailBoxCommentEditbutton">
+			<a href="/photos/<%=@photo.id%>/destroy" class="button red">
+			Delete
+			</a>	
+		</div>
 	<% end %>
 
 	<%= form_tag "/comments/new/"+@photo.id.to_s do %>
@@ -39,7 +44,11 @@
         </div>
         
 
-        <div id="ImageDetailBoxCommentMakeBoxButton" >
+		 <% if @photo.user_id == session[:user_id] %>
+		        <div id="ImageDetailBoxCommentMakeBoxButtonExtra" >
+		 <% else %>
+		        <div id="ImageDetailBoxCommentMakeBoxButton" >
+		<% end %>
         <button class="action green" >
            	<span class="label">
            		Comment

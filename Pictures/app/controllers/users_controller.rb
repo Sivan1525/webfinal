@@ -51,8 +51,6 @@ class UsersController < ApplicationController
   # POST /users.json
   def create
     @user = User.new(params[:user])
-    @returnvalue = UserMailer.firstemail(@user.email).deliver
-    puts "------------------------------------------------------" + @returnvalue.class.name 
     respond_to do |format|
       if @user.save
         format.html { 

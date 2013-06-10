@@ -4,7 +4,7 @@ Pictures::Application.routes.draw do
   resources :photos
   resources :users
 
-
+  get '/photos/:id/destroy' => 'Photos#destroy'
   get '/error' => 'Picapp#error'
   get '/error2' => 'Picapp#error2'
   post '/comments/new/:id' => 'Comments#new'
