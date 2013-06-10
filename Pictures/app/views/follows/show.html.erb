@@ -27,7 +27,7 @@
     </p>
     </div>
 
-    <% if @user.hasFollowedHim(follow.followed_id) %>
+    <% if User.find_by_id(session[:user_id].hasFollowedHim(follow.followed_id) %>
       <div id="listboxbuttonssp">
         <a href="/follows/destroy/<%=follow.followed_id%>" class="button red">
             Unfollow
