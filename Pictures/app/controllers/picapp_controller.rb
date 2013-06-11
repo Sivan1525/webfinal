@@ -11,6 +11,7 @@ class PicappController < ApplicationController
 
 
 	def welcome
+	      reset_session
     	  if session[:user_id] != nil 
     	   	   	redirect_to '/home'
       	  end
